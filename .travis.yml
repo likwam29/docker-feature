@@ -1,0 +1,9 @@
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t mlikwarz/docker-feature -f Dockerfile.dev .
+
+script:
+  - docker run -e CI=true mlikwarz/docker-feature npm run test
